@@ -1,0 +1,12 @@
+If you run iRule commands, the system may display erroneous ERR_NOT_FOUND log messages.
+
+This issue occurs when all of the following conditions are met:
+
+Your BIG-IP APM system is configured with a virtual server that uses an access profile.
+You have configured the access policy of the access profile with an iRule using the ACCESS::remove command.
+Traffic that the access policy processed invokes the iRule to run the ACCESS::remove command.
+
+
+When you run the iRule command, you may observe log messages similar to the following example in the /var/log/apm file:
+err tmm1[<pid>]: 01490514:3: 00000000: Access encountered error: ERR_NOT_FOUND. File: ../modules/hudfilter/access/access.c, 
+Function: access_save_init_req_to_sessiondb, Line: 14823
