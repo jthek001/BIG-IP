@@ -1,0 +1,55 @@
+pecifically to create 'static' resource records like MX and TXT records. I stumbled across a little shell that seems to be what does the work for the configuration gui: zrsh. Variables, designated @VariableName@, are injected from my management tool- below are some examples of the format.
+
+@Zone@ = 'example.com'
+@EscapedZone@ = 'example\.com'
+@RecordType@ = 'MX'
+@DesiredRecords@ = '"external example.com. example.com. 3600 MX 10 smtp.example.com." "external example.com. example.com. 3600 MX 20 smtp1.example.com." "external example.com. example.com. 3600 MX 20 smtp2.example.com."'
+@Authority@ = 'dns.example.com'
+Here's the script I ended up with:
+
+#!/bin/sh
+
+ZoneFile=/tmp/newzone.external.@Zone@.
+Zone=@Zone@
+RecordType=@RecordType@
+ZoneExists=0
+DesiredRecords=(@DesiredRecords@)
+Authority=@Authority@
+
+# Check if zone exists
+echo "listzones" | zrsh | awk '{ print $2 }' | grep '^@EscapedZone@\.$' && ZoneExists=1
+
+# If zone didn't exist, create it
+if [ $ZoneExists -eq 0 ]; then
+  # Create Zone File Defaults
+  ISODate=`date +%Y%m%d`
+cat << EOF > ${ZoneFile}
+  \$ORIGIN .
+  \$TTL 500        ; 8 minutes 20 seconds
+  ${Zone}.            IN SOA  ${Authority}. hostmaster.${Zone}. (
+  ${ISODate}01 ; serial (YYYYMMDDVV)
+                                  10800      ; refresh (3 hours)
+                                  3600       ; retry (1 hour)
+                                  604800     ; expire (1 week)
+                                  60         ; minimum (1 minute)
+                                  )
+  \$TTL 0  ; 0 seconds
+                          NS      ${Authority}.
+  \$TTL 3600       ; 1 hour
+  \$ORIGIN ${Zone}.
+  \$TTL 0  ; 0 seconds
+EOF
+
+  echo "addZoneFile external @Zone@. master db.external.@Zone@. \"${ZoneFile}\"" | zrsh
+
+  rm -f ${ZoneFile}
+fi
+
+# Strip existing static records
+echo "displayzone @Zone@." | zrsh | grep '@RecordType@' | awk '{ cmd=sprintf("echo ''delrr external %s %s %s %s %s %s'' | zrsh ", $1, $1, $2, $4, $5, $6); system(cmd) }'
+
+# Set desired static records
+for i in "${DesiredRecords[@]}"; do 
+  echo "addrr $i" | zrsh; 
+done
+
