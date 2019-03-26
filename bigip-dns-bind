@@ -1,0 +1,52 @@
+1.Big ip DNS uses zone runner utility to DNS Zone files and Bind configuration.
+2.The ZoneRunner utility uses Dynamic DNS Update to immediately update the zone'resource record data to Bind(without requiring the Bind to stop and restart)
+3.Bind doesnot immediately write these dynamci updated to  the associated zone files.
+Instead, these updates are stored a journal file wirh a .jnl filename extension.
+If Bind is restarted after a shutdown or crash, it replays the journal file to incorporate into the zone any updates that took place after the last zone dump
+4.BIND occasionally writes or dumps,the complete contents of the updated zone to its zone file
+however,this is not done immediately after each dynamic update.Instead,the dump is delayed by upto 15 minutes,allowing  additional updated to take place
+
+To force BIND to immediately dump the dynamic updates stored in the journal files, use one of the following procedures
+
+You can force BIND to dump all dynamic updates to zone files for all zones, and remove the journal files, by typing the following command from the BIG-IP command line
+
+rndc stop
+
+The BIND name server restarts automatically.
+
+Forcing BIND to dump the dynamic updates for a specific zone
+
+Log in to the BIG-IP DNS command line.
+To change directories to the directory that contains the zone files, type the following command:
+cd /var/named/config/namedb
+
+Verify the zone view by inspecting the filename of the zone file.
+ZoneRunner names the zone file with the view name directly following the db prefix. The default view is external.
+
+Verify the zone name of the zone file to be updated. You can inspect the SOA record of the zone file to verify the zone name, using the following command syntax:
+grep SOA <zone_filename>
+
+The zone name is the first entry on the line displayed. In the following example, the zone name is askf5.net:
+
+# grep SOA db.external.askf5.net.
+askf5.net              IN SOA  bip6400a.askf5.net. hostmaster.bip6400a.askf5.net. (
+#
+
+Freezing the zone disables Dynamic Updates, forcing BIND to dump any dynamic updates to the zone file for the specified zone, and remove the journal file for that zone. To freeze the zone, use the following command syntax:
+rndc freeze <zone> IN <view>
+
+For example, using the information from the previous example, the command would appear as follows:
+
+rndc freeze askf5.net IN external
+
+In BIG-IP 11.5.0 and later, sync the changes in the journal file to the master file and remove the journal file, by typing the following command:
+Note: In versions before BIG-IP 11.5.0 you can skip to step 9.
+
+rndc sync -clean
+
+To unfreeze the zone to load the modified zone file and enable the zone to receive dynamic updates from ZoneRunner, use the following command syntax:
+rndc unfreeze <zone> IN <view>
+
+For example, using the information from the previous example, the command would appear as follows:
+
+rndc unfreeze askf5.net IN external
