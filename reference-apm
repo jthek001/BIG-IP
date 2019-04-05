@@ -10,3 +10,7 @@ Traffic that the access policy processed invokes the iRule to run the ACCESS::re
 When you run the iRule command, you may observe log messages similar to the following example in the /var/log/apm file:
 err tmm1[<pid>]: 01490514:3: 00000000: Access encountered error: ERR_NOT_FOUND. File: ../modules/hudfilter/access/access.c, 
 Function: access_save_init_req_to_sessiondb, Line: 14823
+
+
+ to match client ip to IP subnets
+expr { [IP::addr [mcget {session.user.clientip}] equals "10.0.0.0/8"] || [IP::addr [mcget {session.user.clientip}] equals "172.16.0.0/27"] }
