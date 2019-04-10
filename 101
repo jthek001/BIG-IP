@@ -1,0 +1,339 @@
+QUESTION 1
+If a pool member has been marked DOWN by a monitor, what will be the result?
+A. That pool member will receive the same level of traffic regardless of the state
+B. That pool member will still receive traffic but will redirect it to other servers.
+C. That pool member will only receive traffic for existing connections.
+D. That pool member will not receive any more traffic until it comes up.
+
+1.D
+
+QUESTION 2
+An administrator is deploying four identical servers to perform load balanced DNS.
+What is the correct configuration to accomplish this?
+A. round robin load balancing with simple persistence
+B. ratio load balancing with cookie persistence
+C. ratio load balancing with simple persistence
+D. round robin load balancing without persistence
+
+2.A
+
+
+QUESTION 3
+A client initiates a TCP connection to the load balancer. The load balancer opens a new TCP connection to the server.
+What is this called?
+A. passthrough connection
+B. half proxy connection
+C. asynchronous connection
+D. full proxy connection
+
+3.A
+
+
+QUESTION 4
+Which term describes the systems and processes used to associate users with digital identities?
+A.Certificate Authority
+B.Hardware Security Module
+C.Digital Rights Management
+D.Public Key Infrastructure
+
+4.A
+
+QUESTION 5
+Which security policy protects from known attacks and defines resources that should be accessible?
+A. a security policy using both positive and negative security
+B. a security policy using ACL security
+C. a security policy using negative security only
+D. a security policy using positive security only
+
+5.C
+
+6
+
+Central management of Certificates 
+Answer Big IQ
+
+
+7
+minimum tcp connection for ftp 
+Answer 2
+
+8 
+OSI layer funtionality 
+Answer:It provides logical representation & host to host communication
+
+9
+minimum tcp connection for ftp
+Answer:2
+
+10
+what is this ip used for 224.0.0.1
+Answer:Its multicast IP for local subnet
+
+11
+usable for the network 2001:db8::/64.
+Answer: I chose the 2001:db8:ffff:ffff:ffff:ffff;
+
+12.
+A network 192.168.100 / 27 how many hosts and subnets is it possible to have? -> 
+Answer:30 host and 8 subnets
+
+13.
+Network Protocol – (IPv4, ICMP, ARP, TCP and …) Respond – (IPv4 and ICMP)
+
+14.
+checking F5 box update … (Options – f5.com, ihealth.f5.com, askf5.com, devcentral.f5.com) 
+Answer: AskF5.com
+
+15.
+In a failover the user must re-authenticate in the application. 
+AnswerBecause? —> Mirror is not enabled
+
+16
+Questions on HA like what causes a failover 
+heartbeat
+
+17
+question on device trust in HA
+
+18
+question like what are parts of ssl communication .
+
+19
+Client A connect with Client B in transparent HUB what mac address will client B see
+
+20
+SAML question , something like what does service this protocol provide ,> SSO
+
+21
+questions related to OSI layer data packets , bit – physical layer , Network data gram, TCP – segment
+
+22
+question like what ARP provides 
+
+IP to mac binding
+
+23
+question on AAA
+what provides accounting service
+DIAMETER
+
+24
+in AAA what does SAML provide autherization & access filter
+
+
+25
+What is the most efficient certificate revocation method?
+
+Server certificate attribute validation
+
+Client certificate attribute validation
+
+Online Certificate Revocation List
+
+Online Certificate Status Protocol
+
+Answer Online Certificate Revocation List
+
+26
+According to the OSI model, how do the layers logically track data?
+
+by encapsulating data with their own information
+
+by applying tags as the information moves between layers
+
+by using reference pointers to track data entering and leaving each layer
+
+by using packet information to track the data with a table of layer-specific information
+
+
+Answer by using packet information to track the data with a table of layer-specific information
+
+27
+
+Which term describes the systems and processes used to associate users with digital identities?
+Certificate Authority
+Hardware Security Module
+Digital Rights Management
+Public Key Infrastructure
+
+Answer Public Key Infrastructure
+
+28
+
+Which three factors should influence the decision to choose hardware or a virtual appliance? (Choose three.)
+A. multiprotocol support
+B. power and cooling
+C. management API
+D. available rack space
+E. performance
+
+Answer B/D/E
+
+29.
+What are two advantages of running a virtualized load balancer over running a hardware load balancer? (Choose two.)
+A. A virtual load balancer runs newer code than a hardware load balancer.
+B. A virtual load balancer can be deployed remotely via software.
+C. A virtual load balancer is faster.
+D. A virtual load balancer is easier to configure.
+E. A virtual load balancer is cheaper.
+
+B/D
+
+30.
+Which F5 technology allows an administrator to create application-centric views of BIG-IP configuration objects?
+A. iRules
+B. iApps
+C. iControl
+D. iSessions
+
+B
+
+31.
+In which scenario is a full proxy TCP connection required?
+A. when access lists are enabled
+B. when SYN cookie DOS protection is enabled
+C. when caching is enabled
+D. when connection mirroring is enabled
+
+C
+
+32.
+An administrator has a specific file that is requested frequently on the web application. How can the administrator reduce traffic to the servers?
+A. serve the file from RAM cache
+B. enable file compression
+C. use a longer packet TTL
+D. use TCP optiization
+
+A
+
+33.
+Which F5 feature provides custom Data Loss Prevention (DLP)?
+A. TCP profile
+B. SSL profile
+C. iRules
+D. iControl
+
+C
+
+34.
+In which scenario is a full proxy TCP connection required?
+A. when enabling TCP routing on the external facing interface of the load balancer
+B. when configuring different maximum segment sizes on the client and server sides of the load balancer
+C. when changing the source IP address when crossing from the client to the server side of the load balancer
+D. when passing the client IP address to originating servers
+
+C
+
+35.
+
+In which security model is all traffic denied by default?
+A. rule-based security model
+B. positive security model
+C. negative security model
+D. role-based security model
+
+B
+
+36.
+
+Which security model can be deployed most rapidly to protect a web application?
+A. ACL security model
+B. negative security model
+C. open security model
+D. positive security model
+
+B
+
+37.
+An administrator has been asked to create a template to deploy an application traffic management solution on many BIG-IP devices.
+Which F5 technology should the administrator use?
+A. iRules
+B. iControl
+C. iApps
+D. iSessions
+
+C
+
+38.
+how client test of a specific method is supported 
+OPTION
+
+40
+exhibit with tcp dump and the questions who should send the sync\ack — 
+the answer is the Client source address in the second line of the dump.
+
+41
+Admin discovered new security vulnerability how can he rapidly fix it?
+choices “icontrol-isession-iRule-iApp”
+
+42
+How to restirect http mthod 
+(irule-http profile-ssl profile)
+
+43
+SAML provide what function in AAA i don’t remeber the choices but the answer was ” usage measure & authentication )
+
+44
+user sends big amount of data to a server but during the process the server sent tcp window size 
+what is the reason choices were somethinf like ( server can’t handle more data, server rest the session and two other chouces but you should choose just one )
+
+45
+what could benfit more from compression 
+(http ,peer-to-peer, video,media) video needs to be checked
+
+
+46 traffic passes though the loadblancer from the client to server but the return traffic pass bypass the LB directly from server to client, what proxy archticure is impelemnteed 
+(full stack proxy, packt-by-packet proxy and other option )
+
+47 -what is responsab;e for flow-controll and error correction in Data-link layer 
+(MAC,LLC,…..and other options)
+
+48 -what can add more application security layer to SMTP and FTP (LTM,GTM,APM,AFM)
+
+
+49
+traffic is processed by two units and each units is ready to handle all the traffic of the other failed, what type of high availability is implemented 
+(Active-active,active-standby…..other option)
+
+50
+new virtual server is implemented and needed to be tested and the old virtual server is still in use, how it should be tested “or something like that” choices were 
+(add ip address to the FQDN, add entry to client host file )
+
+51 
+a deployment that is fast to get and deploy answer is virtual server
+
+52
+what is minimum objects required for loadbalnce(ip address- desstination server address- helath monitor-presistance profile)
+
+53
+protocol SOAP how it works ( the correct answers was XML, HTTP)
+
+54
+Flow of osi when sender – when client A is sending packet to B how it will look on OSI  – layer from1 to 7 or from 7 to 1
+
+55
+Which method used to verify if server support POST method —> trace
+
+56
+
+http 401 response when user is not authenticated
+
+57
+what is minimum objects required for loadbalnce(ip address- desstination server address- helath monitor-presistance profile )
+
+58
+what is responsab;e for flow-controll and error correction in Data-link layer (MAC,LLC,…..and other options)
+
+59
+what is responsab;e for flow-controll and error correction in Data-link layer (MAC,LLC,…..and other options)
+
+60
+method for authentication (ex. ldap)
+
+61
+which protocol send data unencrypted in VPN connection (IPSEC AH, GRE, PPTP, one more IPSEC..)
+GRE
+
+62
+
+mac masquarade would be on active member of HA pair
