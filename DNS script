@@ -1,0 +1,32 @@
+#############################################################
+
+#!/bin/bash
+echo "Enter web address : "
+read address
+echo "Entered web address : $address"
+nslookup "$address"
+
+ping -c 4 $(dig +short "$address" | head -1)
+
+##############################################################
+
+
+% for d in example.com example.org; do dig +short A $d; done 
+93.184.216.34
+93.184.216.34
+% for d in example.com example.org; do host -t A $d; done                   
+example.com has address 93.184.216.34
+example.org has address 93.184.216.34
+
+###############################################################
+
+
+while read zone; do dig $zone +short; done <myzones.txt
+
+
+###############################################################
+To get the zone name from the named.conf
+
+grep 'zone' named.conf | awk '{print $2}' | sed 's/"//g'
+
+###############################################################
