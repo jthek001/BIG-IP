@@ -1,0 +1,12 @@
+filter no_audit { not match ( value=("AUDIT") );    }
+
+destination remote_server {
+    udp(\"172.16.10.26\" port(4000));
+};
+
+log {
+    source(local);
+    filter(syslog_level);
+    filter(no_audit);
+    destination(remote_server);
+};
